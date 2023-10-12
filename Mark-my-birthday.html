@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Calendar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        #calendar {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        td.birthday {
+            background-color: #ffcccb;
+        }
+    </style>
+</head>
+<body>
+    <div id="calendar"></div>
+    <script>
+        const calendarContainer = document.getElementById('calendar');
+        
+        // Function to generate a calendar for the current year
+        function generateCalendar(year, month, birthday) {
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const firstDayOfWeek = new Date(year, month, 1).getDay();
+            const table = document.createElement('table');
+            let dayCounter = 1;
+
+            // Define weekday names
+            const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            // Create header row for weekdays
+            const headerRow = document.createElement('tr');
+            weekdays.forEach((weekday) => {
+                const th = document.createElement('th');
+                th.textContent = weekday;
+                headerRow.appendChild(th);
+            });
+            table.appendChild(headerRow);
+
+            for (let i = 0; i < 6; i++) {
+                const row = document.createElement('tr');
+
+                for (let j = 0; j < 7; j++) {
+                    const cell = document.createElement('td');
+
+                    if (i === 0 && j < firstDayOfWeek) {
+                        // Empty cell before the first day of the month
+                        cell.textContent = '';
+                    } else if (dayCounter <= daysInMonth) {
+                        cell.textContent = dayCounter;
+                        if (dayCounter === birthday.getDate() && month === birthday.getMonth()) {
+                            cell.classList.add('birthday');
+                        }
+                        dayCounter++;
+                    }
+
+                    row.appendChild(cell);
+                }
+
+                table.appendChild(row);
+            }
+
+            return table;
+        }
+
+        // Function to handle the button click
+        function showBirthdayCalendar() {
+            const birthdayInput = prompt('Enter your birthday (MM/DD):');
+            const [month, day] = birthdayInput.split('/').map(Number);
+
+            if (isNaN(month) || isNaN(day) || month < 1 || month > 12 || day < 1 || day > 31) {
+                alert('Invalid input. Please enter a valid birthday (MM/DD).');
+            } else {
+                const today = new Date();
+                const birthday = new Date(today.getFullYear(), month - 1, day);
+                const calendar = generateCalendar(today.getFullYear(), today.getMonth(), birthday);
+                calendarContainer.innerHTML = '';
+
+                // Display the name of the month and year
+                const monthYearHeader = document.createElement('h1');
+                monthYearHeader.textContent = `${birthday.toLocaleString('default', { month: 'long' })} ${today.getFullYear()}`;
+                calendarContainer.appendChild(monthYearHeader);
+
+                calendarContainer.appendChild(calendar);
+            }
+        }
+
+        // Initial display
+        showBirthdayCalendar();
+    </script>
+</body>
+</html>

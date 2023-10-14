@@ -94,7 +94,7 @@
 
         // Function to handle the button click
         function showBirthdayCalendar() {
-            const birthdayInput = prompt('Enter your birthday (MM/DD):');
+            const birthdayInput = prompt('!!! Enter your birthday (MM/DD):');
             const [month, day] = birthdayInput.split('/').map(Number);
 
             if (isNaN(month) || isNaN(day) || month < 1 || month > 12 || day < 1 || day > 31) {

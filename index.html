@@ -46,7 +46,7 @@
     <div id="calendar"></div>
     <script>
         const calendarContainer = document.getElementById('calendar');
-        
+        //My change
         // Function to generate a calendar for the current year
         function generateCalendar(year, month, birthday) {
             const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -78,7 +78,7 @@
                     } else if (dayCounter <= daysInMonth) {
                         cell.textContent = dayCounter;
                         if (dayCounter === birthday.getDate() && month === birthday.getMonth()) {
-                            cell.classList.add('birthday');
+                            cell.classList.add('td.birthday');
                         }
                         dayCounter++;
                     }

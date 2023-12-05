@@ -48,9 +48,9 @@
         const calendarContainer = document.getElementById('calendar');
         //My change
         // Function to generate a calendar for the current year
-        function generateCalendar(year, month, birthday) {
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            const firstDayOfWeek = new Date(year, month, 1).getDay();
+        function generateCalendar(birthday) {
+            const daysInMonth = new Date(birthday.getFullYear(), birthday.getMonth() + 1, 0).getDate();
+            const firstDayOfWeek = new Date(birthday.getFullYear(), birthday.getMonth(), 1).getDay();
             const table = document.createElement('table');
             let dayCounter = 1;
 
@@ -77,11 +77,7 @@
                         cell.textContent = '';
                     } else if (dayCounter <= daysInMonth) {
                         cell.textContent = dayCounter;
-                            console.log(dayCounter, "|", month);
-                            console.log(birthday.getMonth());
-                            console.log(birthday.getDate());
-                            console.log("---------------------------------------------");
-                        if (dayCounter === birthday.getDate() && month === birthday.getMonth()) {
+                        if (dayCounter === birthday.getDate()) {
                             cell.classList.add('td.birthday');
                         }
                         dayCounter++;
@@ -106,7 +102,7 @@
             } else {
                 const today = new Date();
                 const birthday = new Date(today.getFullYear(), month, day);
-                const calendar = generateCalendar(today.getFullYear(), today.getMonth(), birthday);
+                const calendar = generateCalendar(birthday);
                 calendarContainer.innerHTML = '';
 
                 // Display the name of the month and year

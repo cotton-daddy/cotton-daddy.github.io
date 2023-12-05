@@ -77,9 +77,11 @@
                         cell.textContent = '';
                     } else if (dayCounter <= daysInMonth) {
                         cell.textContent = dayCounter;
+                            console.log(dayCounter);
                         if (dayCounter === birthday.getDate() && month === birthday.getMonth()) {
+                            console.log("Nasao rodjus 1!");
                             cell.classList.add('td.birthday');
-                            console.log("Radim, radim");
+                            console.log("Nasao rodjus 2!");
                         }
                         dayCounter++;
                     }

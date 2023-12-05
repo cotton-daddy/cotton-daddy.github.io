@@ -79,6 +79,8 @@
                         cell.textContent = dayCounter;
                         if (dayCounter === birthday.getDate() && month === birthday.getMonth()) {
                             cell.classList.add('td.birthday');
+                            console.log(birthday.getDate());
+                            console.log(month === birthday.getMonth());
                         }
                         dayCounter++;
                     }

@@ -78,6 +78,7 @@
                     } else if (dayCounter <= daysInMonth) {
                         cell.textContent = dayCounter;
                         if (dayCounter === birthday.getDate() && month === birthday.getMonth()) {
+                            console.log("I am here");
                             cell.classList.add('td.birthday');
                         }
                         dayCounter++;

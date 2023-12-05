@@ -37,7 +37,7 @@
             border: 1px solid #ccc;
         }
 
-        td.birthday {
+        #brthdy {
             background-color: #ffcccb;
         }
     </style>
@@ -79,7 +79,7 @@
                         cell.textContent = dayCounter;
                         console.log(dayCounter, birthday.getDate());
                         if (dayCounter === birthday.getDate()) {
-                            cell.classList.add('td.birthday');
+                            cell.id='brthdy';
                         }
                         dayCounter++;
                     }

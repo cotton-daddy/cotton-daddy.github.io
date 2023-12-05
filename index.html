@@ -54,8 +54,6 @@
             const table = document.createElement('table');
             let dayCounter = 1;
 
-                            console.log("Radim, radim");
-
             // Define weekday names
             const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -81,6 +79,7 @@
                         cell.textContent = dayCounter;
                         if (dayCounter === birthday.getDate() && month === birthday.getMonth()) {
                             cell.classList.add('td.birthday');
+                            console.log("Radim, radim");
                         }
                         dayCounter++;
                     }

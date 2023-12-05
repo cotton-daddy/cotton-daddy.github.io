@@ -77,11 +77,8 @@
                         cell.textContent = '';
                     } else if (dayCounter <= daysInMonth) {
                         cell.textContent = dayCounter;
-                            console.log(dayCounter);
                         if (dayCounter === birthday.getDate() && month === birthday.getMonth()) {
-                            console.log("Nasao rodjus 1!");
                             cell.classList.add('td.birthday');
-                            console.log("Nasao rodjus 2!");
                         }
                         dayCounter++;
                     }
@@ -103,8 +100,10 @@
             if (isNaN(month) || isNaN(day) || month < 1 || month > 12 || day < 1 || day > 31) {
                 alert('Invalid input. Please enter a valid birthday (MM/DD).');
             } else {
+                            console.log(day, "/", month);
                 const today = new Date();
                 const birthday = new Date(today.getFullYear(), month - 1, day);
+                            console.log(birthday);
                 const calendar = generateCalendar(today.getFullYear(), today.getMonth(), birthday);
                 calendarContainer.innerHTML = '';
 

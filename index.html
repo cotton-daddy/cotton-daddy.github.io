@@ -64,10 +64,6 @@
                 th.textContent = weekday;
                 headerRow.appendChild(th);
             });
-
-                            console.log(birthday.getDate());
-                            console.log(birthday.getMonth());
-            
             table.appendChild(headerRow);
 
             for (let i = 0; i < 6; i++) {
@@ -105,7 +101,7 @@
                 alert('Invalid input. Please enter a valid birthday (MM/DD).');
             } else {
                 const today = new Date();
-                const birthday = new Date(today.getFullYear(), month - 1, day);
+                const birthday = new Date(today.getFullYear(), month, day);
                 const calendar = generateCalendar(today.getFullYear(), today.getMonth(), birthday);
                 calendarContainer.innerHTML = '';
 

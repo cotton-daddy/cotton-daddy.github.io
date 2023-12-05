@@ -64,6 +64,10 @@
                 th.textContent = weekday;
                 headerRow.appendChild(th);
             });
+
+                            console.log(birthday.getDate());
+                            console.log(birthday.getMonth());
+            
             table.appendChild(headerRow);
 
             for (let i = 0; i < 6; i++) {
@@ -102,7 +106,6 @@
             } else {
                 const today = new Date();
                 const birthday = new Date(today.getFullYear(), month - 1, day);
-                            console.log(birthday.getDate());
                 const calendar = generateCalendar(today.getFullYear(), today.getMonth(), birthday);
                 calendarContainer.innerHTML = '';
 
